@@ -1,0 +1,11 @@
+{
+  "name": "ah-enterprise-catalog",
+  "private": true,
+  "description": "WhatsApp product catalog for AH Enterprise. No build step, no runtime dependencies.",
+  "type": "module",
+  "scripts": {
+    "dev": "npx wrangler pages dev",
+    "test": "node --test \"tests/*.js\"",
+    "sync-sample": "node scripts/sync-sample.mjs"
+  }
+}

@@ -1,0 +1,11 @@
+# Copy this file to `.dev.vars` (which git ignores) and fill in the values.
+# These are the same names you add in Cloudflare Pages -> Settings -> Variables.
+
+# Google Sheet -> File -> Share -> Publish to web -> pick a tab -> CSV -> copy link
+# Leave these commented out to preview with the sample data in sheet-template/.
+# SHEET_PRODUCTS_CSV=https://docs.google.com/spreadsheets/d/e/YOUR_SHEET_ID/pub?gid=0&single=true&output=csv
+# SHEET_CATEGORIES_CSV=https://docs.google.com/spreadsheets/d/e/YOUR_SHEET_ID/pub?gid=111111111&single=true&output=csv
+# SHEET_SETTINGS_CSV=https://docs.google.com/spreadsheets/d/e/YOUR_SHEET_ID/pub?gid=222222222&single=true&output=csv
+
+# Optional: Cloudflare Web Analytics token. Leave empty to disable analytics.
+CF_ANALYTICS_TOKEN=

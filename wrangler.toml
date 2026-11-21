@@ -1,0 +1,8 @@
+# Cloudflare Pages config for the AH Enterprise catalog. No build step.
+name = "ah-enterprise-catalog"
+pages_build_output_dir = "public"
+compatibility_date = "2025-01-01"
+
+# Sheet CSV links are NOT stored here.
+# Production: Cloudflare dashboard -> Pages project -> Settings -> Variables.
+# Local dev:  copy .dev.vars.example to .dev.vars and fill it in.

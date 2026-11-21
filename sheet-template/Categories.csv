@@ -1,0 +1,7 @@
+slug,name,image,sort_order,active
+kurtis,Kurtis,/sample-images/kurti-maroon.jpg,1,Yes
+abayas,Abayas,/sample-images/abaya.jpg,2,Yes
+churidar,Churidar Sets,/sample-images/churidar.jpg,3,Yes
+sarees,Sarees,/sample-images/saree.jpg,4,Yes
+kids,Kids Wear,/sample-images/frock.jpg,5,Yes
+nightwear,Nightwear,/sample-images/nighty.jpg,6,Yes

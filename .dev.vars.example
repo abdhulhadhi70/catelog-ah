@@ -1,5 +1,5 @@
 # Copy this file to `.dev.vars` (which git ignores) and fill in the values.
-# These are the same names you add in Cloudflare Pages -> Settings -> Variables.
+# These are the same names you add in Cloudflare -> Workers & Pages -> catelog-ah -> Settings -> Variables and Secrets.
 
 # Google Sheet -> File -> Share -> Publish to web -> pick a tab -> CSV -> copy link
 # Leave these commented out to preview with the sample data in sheet-template/.

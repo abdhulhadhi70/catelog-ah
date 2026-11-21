@@ -39,7 +39,7 @@ export function sourceOf(env) {
  * Returns { catalog, warnings, stats, source, stale, error? }.
  * Throws only if there is no data at all to show.
  *
- * @param {object} env      Pages env
+ * @param {object} env      Worker env
  * @param {object} ctx      { waitUntil }
  * @param {object} options  { fresh: true } skips the 60 s caches
  */

@@ -15,9 +15,9 @@ a code change or a redeploy.
 
 | Part | Choice |
 |---|---|
-| Hosting | Cloudflare Pages (free plan) |
+| Hosting | Cloudflare Workers with static assets (free plan), auto-deploy on push to `main` |
 | Frontend | Plain HTML, CSS and vanilla JS modules. **No framework, no build step** |
-| Backend | Cloudflare Pages Functions in `functions/` |
+| Backend | One Worker (`src/worker.js`) routing to the handlers in `functions/` |
 | Data | Google Sheet, each tab published to the web as CSV |
 | Tests | `node --test`, no dependencies |
 
@@ -32,6 +32,7 @@ public/                 static files served as-is
   js/                   ES modules: catalog-page, product-page, data, list, whatsapp, ui, format, store
   sample-images/        illustrated preview photos used by the sample data
   icons/                app icons and the default share image
+src/worker.js           routes /, /p/*, /api/*, /sitemap.xml, /robots.txt to functions/; everything else is a static file
 functions/
   index.js              GET /            -> fills in link-preview tags for the home page
   p/[slug].js           GET /p/<slug>    -> product page with link-preview tags; old slugs redirect
@@ -84,13 +85,14 @@ Other `https://` links are used as-is. The Drive file must be shared as
    Do the same for **Categories** and **Settings**. You now have three links
    that end in `output=csv`.
 
-### 2. Cloudflare Pages
+### 2. Cloudflare (Workers)
 
-1. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git**.
-2. Choose this GitHub repository and the `main` branch.
-3. Build settings: **Framework preset: None**, **Build command: empty**,
-   **Build output directory: `public`**.
-4. **Environment variables** (Production):
+1. Cloudflare dashboard → **Workers & Pages → Create → Import a repository**.
+2. Choose this GitHub repository. Project name **`catelog-ah`** (it must match
+   `name` in `wrangler.toml`).
+3. Build command: **empty**. Deploy command: **`npx wrangler deploy`**.
+   Root directory: **`/`**.
+4. After the first deploy: **Settings → Variables and Secrets → Add** (type *Text*):
 
    | Name | Value |
    |---|---|
@@ -99,23 +101,26 @@ Other `https://` links are used as-is. The Drive file must be shared as
    | `SHEET_SETTINGS_CSV` | Settings tab CSV link |
    | `CF_ANALYTICS_TOKEN` | optional, see below |
 
-5. **Save and Deploy.** Every push to `main` redeploys. Sheet edits never need a deploy.
-6. Open `https://<project>.pages.dev/api/health` and check there are no warnings.
+   Saving variables redeploys the Worker. Sheet edits never need a deploy.
+5. Your site is at `https://catelog-ah.<your-subdomain>.workers.dev`
+   (shown on the Worker's Overview page). Check `/api/health`.
 
-A project created by uploading files directly (`wrangler pages deploy`)
-cannot later be switched to Git. Use **Connect to Git** for the permanent
-site.
+Every push to `main` redeploys automatically.
+
+Note: on a `*.workers.dev` address Cloudflare's edge cache is not used, so
+the 60-second cache and the last-known-good copy are kept in the Worker's
+memory only. On a custom domain the edge cache is used as well.
 
 ### 3. Custom domain (optional)
 
-Pages project → **Custom domains → Set up a custom domain**, e.g.
+Worker → **Settings → Domains & Routes → Add → Custom domain**, e.g.
 `catalog.yourdomain.in`. Cloudflare walks you through the DNS record.
 
 ### 4. Web Analytics (optional)
 
 Cloudflare dashboard → **Analytics & Logs → Web Analytics → Add a site**,
 choose the JS snippet option, and copy the `token` value from the snippet.
-Put it in `CF_ANALYTICS_TOKEN` and redeploy. Leave it empty to disable.
+Put it in `CF_ANALYTICS_TOKEN`. Leave it empty to disable.
 
 ## Local development
 
@@ -123,7 +128,7 @@ Needs Node 18+. Nothing to install: Wrangler runs through `npx`.
 
 ```bash
 cp .dev.vars.example .dev.vars   # optional: paste your 3 CSV links; no file = sample data
-npm run dev                      # http://localhost:8788
+npm run dev                      # npx wrangler dev -> http://localhost:8787
 npm test                         # unit tests
 ```
 

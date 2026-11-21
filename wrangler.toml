@@ -1,8 +1,18 @@
-# Cloudflare Pages config for the AH Enterprise catalog. No build step.
-name = "ah-enterprise-catalog"
-pages_build_output_dir = "public"
-compatibility_date = "2025-01-01"
+# Cloudflare Workers config for the AH Enterprise catalog. No build step.
+# `name` must match the Worker's name in the Cloudflare dashboard.
+name = "catelog-ah"
+main = "src/worker.js"
+compatibility_date = "2025-06-01"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+# These paths run the Worker (src/worker.js); everything else is a static file.
+run_worker_first = ["/", "/p/*", "/api/*", "/sitemap.xml", "/robots.txt"]
+
+[observability]
+enabled = true
 
 # Sheet CSV links are NOT stored here.
-# Production: Cloudflare dashboard -> Pages project -> Settings -> Variables.
+# Production: Cloudflare dashboard -> Workers & Pages -> catelog-ah -> Settings -> Variables and Secrets.
 # Local dev:  copy .dev.vars.example to .dev.vars and fill it in.

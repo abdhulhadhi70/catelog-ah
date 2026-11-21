@@ -4,7 +4,7 @@
   "description": "WhatsApp product catalog for AH Enterprise. No build step, no runtime dependencies.",
   "type": "module",
   "scripts": {
-    "dev": "npx wrangler pages dev",
+    "dev": "npx wrangler dev",
     "test": "node --test \"tests/*.js\"",
     "sync-sample": "node scripts/sync-sample.mjs"
   }

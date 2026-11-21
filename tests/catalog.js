@@ -22,7 +22,7 @@ test("findProduct: unknown", () => {
 test("getCatalog: no env -> sample data with a setup warning", async () => {
   const r = await getCatalog({}, {}, { fresh: true });
   assert.equal(r.source, "sample");
-  assert.equal(r.catalog.products.length, 6);
+  assert.equal(r.catalog.products.length, 3);
   assert.match(r.warnings[0].message, /SAMPLE/);
 });
 

@@ -97,15 +97,16 @@ test("WhatsApp number with + and spaces is cleaned", () => {
 });
 
 test("the sheet templates build cleanly", () => {
-  const { catalog, stats } = buildCatalog({
+  const { catalog, stats, warnings } = buildCatalog({
     productRows: parseCSVObjects(SAMPLE_CSV.products),
     categoryRows: parseCSVObjects(SAMPLE_CSV.categories),
     settingRows: parseCSVObjects(SAMPLE_CSV.settings),
   });
-  assert.equal(stats.products, 6);
-  assert.equal(stats.hiddenProducts, 1);
-  assert.equal(catalog.products.find((p) => p.id === "AH-1005").soldOut, true);
-  assert.equal(catalog.products[0].images.length, 2);
+  assert.deepEqual(warnings.filter((w) => w.tab !== "Settings"), []);
+  assert.equal(stats.products, 3);
+  assert.equal(stats.featured, 3);
+  assert.equal(catalog.products[0].slug, "dr-morepen-deluxe-stethoscope-st-01a-ah-2001");
+  assert.equal(catalog.products[0].discountPercent, 20);
   assert.match(catalog.products[0].description, /\n/);
 });
 

@@ -1,11 +1,9 @@
 id,active,featured,name,category,price,offer_price,sizes,out_of_stock_sizes,colours,fabric,description,images,tags,sort_order
-AH-1001,Yes,Yes,Rayon Printed Kurti,kurtis,899,749,"S,M,L,XL,XXL",XXL,"Maroon,Bottle Green",Rayon,"Soft rayon kurti with an all-over floral print.
-Straight cut, three-quarter sleeves, calf length.","/sample-images/kurti-maroon.jpg, /sample-images/kurti-green.jpg","floral,daily wear,office",1
-AH-1002,Yes,Yes,Nida Abaya with Embroidered Cuffs,abayas,1899,,"52,54,56,58",,"Black,Navy",Nida,"Flowing open-front abaya with a matching shayla.
-Hand-finished embroidery on the cuffs.",/sample-images/abaya.jpg,"abaya,shayla,occasion",2
-AH-1003,Yes,No,Cotton Churidar Set,churidar,1299,1099,"M,L,XL",,"Peach,Sky Blue",Cotton,"Three-piece set: kurta, churidar and dupatta.
-Breathable cotton for everyday wear.",/sample-images/churidar.jpg,"set,dupatta,cotton",3
-AH-1004,Yes,Yes,Soft Silk Saree with Zari Border,sarees,2499,,Free Size,,"Wine,Kerala Gold",Soft Silk,Comes with an unstitched blouse piece.,/sample-images/saree.jpg,"saree,wedding,festive",4
-AH-1005,Yes,No,Girls' Cotton Frock,kids,599,499,"2-3Y,4-5Y,6-7Y","2-3Y,4-5Y,6-7Y","Yellow,Pink",Cotton,Light cotton frock with a full lining.,/sample-images/frock.jpg,"kids,summer",5
-AH-1006,Yes,No,Printed Cotton Nighty,nightwear,449,,"L,XL,XXL",,"Lavender,Mint",Cotton,Soft cotton nighty with a small all-over print. Front zip.,/sample-images/nighty.jpg,"nightwear,cotton",6
-AH-1007,No,No,Embroidered Party Kurti,kurtis,1499,,"M,L,XL",,Navy,Georgette,Hidden from the site until restocked (active = No).,/sample-images/kurti-green.jpg,"party,embroidery",7
+AH-2001,Yes,Yes,Dr. Morepen Deluxe Stethoscope ST-01A,stethoscopes,1499,1199,Adult,,Black,,"Dual-head chestpiece with a stainless-steel frame and silicone ear knobs.
+Adult size, supplied boxed.",/sample-images/stethoscope-st01a.jpg,"stethoscope,dr morepen,st-01a,st01a,mbbs,nursing,doctor",1
+AH-2002,Yes,Yes,Dissection Kit with Zip Case,dissection-kits,799,649,,,,,"Stainless-steel dissection instruments in a padded zip case.
+Includes scissors, forceps, a scalpel handle with blades, probes and a razor.
+Suitable for MBBS, BDS, nursing and biology practicals.",/sample-images/dissection-kit.jpg,"dissection,instruments,scissors,forceps,scalpel,mbbs,biology,student kit",2
+AH-2003,Yes,Yes,Physiotherapy Assessment Kit,physio-kits,1299,,,,,,"Assessment tools in a zip case:
+three goniometers (360°, 180° and finger), a tuning fork, a reflex hammer and a measuring tape.
+For physiotherapy and BPT students.",/sample-images/physio-kit.jpg,"physiotherapy,bpt,goniometer,tuning fork,reflex hammer,measuring tape,student kit",3

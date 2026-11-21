@@ -1,7 +1,4 @@
 slug,name,image,sort_order,active
-kurtis,Kurtis,/sample-images/kurti-maroon.jpg,1,Yes
-abayas,Abayas,/sample-images/abaya.jpg,2,Yes
-churidar,Churidar Sets,/sample-images/churidar.jpg,3,Yes
-sarees,Sarees,/sample-images/saree.jpg,4,Yes
-kids,Kids Wear,/sample-images/frock.jpg,5,Yes
-nightwear,Nightwear,/sample-images/nighty.jpg,6,Yes
+stethoscopes,Stethoscopes,/sample-images/stethoscope-st01a.jpg,1,Yes
+dissection-kits,Dissection Kits,/sample-images/dissection-kit.jpg,2,Yes
+physio-kits,Physiotherapy Kits,/sample-images/physio-kit.jpg,3,Yes

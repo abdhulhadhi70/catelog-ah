@@ -31,14 +31,15 @@ export function priceHTML(p, settings, { large = false } = {}) {
   return `<div class="price${large ? " price-lg" : ""}">${now}${sale}</div>`;
 }
 
-export function cardHTML(p, settings, { eager = false } = {}) {
-  return `<a class="card${p.soldOut ? " is-sold-out" : ""}" href="/p/${esc(p.slug)}">
-    <div style="position:relative">
+export function cardHTML(p, settings, { eager = false, index = 0 } = {}) {
+  return `<a class="card${p.soldOut ? " is-sold-out" : ""}" href="/p/${esc(p.slug)}" style="--i:${Math.min(index, 12)}">
+    <div class="card-media">
       ${imageHTML(p.images[0], p.name, { eager })}
       ${p.offerPrice && !p.soldOut ? `<span class="pill-off">${p.discountPercent}% off</span>` : ""}
       ${p.soldOut ? '<span class="ribbon">Out of stock</span>' : ""}
     </div>
     <div class="card-body">
+      ${p.categoryName ? `<p class="card-cat">${esc(p.categoryName)}</p>` : ""}
       <h3 class="card-name">${esc(p.name)}</h3>
       ${priceHTML(p, settings)}
     </div>
@@ -73,7 +74,33 @@ export function sortProducts(list, sort) {
   return copy.sort((a, b) => a.soldOut - b.soldOut || b.featured - a.featured);
 }
 
-export const railHTML = (list, settings) => list.map((p, i) => cardHTML(p, settings, { eager: i < 2 })).join("");
+export const railHTML = (list, settings) => list.map((p, i) => cardHTML(p, settings, { eager: i < 2, index: i })).join("");
 export const gridHTML = (list, settings, featuredShown) =>
-  list.map((p, i) => cardHTML(p, settings, { eager: !featuredShown && i < 4 })).join("");
+  list.map((p, i) => cardHTML(p, settings, { eager: !featuredShown && i < 4, index: i })).join("");
+
+// ---------- hero ----------
+
+/** Words for the opening section, all from the Settings tab. */
+export function heroText(s) {
+  return {
+    title: s.tagline || s.businessName,
+    kicker: s.locationText || "",
+    note: s.deliveryNote || "",
+  };
+}
+
+/** Up to three featured photos, fanned like cards on a table. */
+export function heroArtHTML(products) {
+  return products
+    .filter((p) => p.images[0])
+    .slice(0, 3)
+    .map(
+      (p, i) =>
+        `<a class="hero-card hero-card-${i + 1}" href="/p/${esc(p.slug)}" tabindex="-1">${imageHTML(p.images[0], p.name, {
+          eager: true,
+          size: "src",
+        })}</a>`,
+    )
+    .join("");
+}
 export const countText = (n) => `${n} item${n === 1 ? "" : "s"}`;

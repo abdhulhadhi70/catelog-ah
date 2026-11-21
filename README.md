@@ -144,5 +144,7 @@ data matches (a test fails until you do).
 - "Newest" sort shows the bottom rows of the sheet first (new products are added at the bottom).
 - Product links survive renames: `/p/<anything>-ah-1001` finds product `AH-1001`
   and redirects to its current address.
-- Muted text is `#6B5F64` and WhatsApp buttons are `#1A7F4B` rather than the
-  brief's `#8A7F83` / `#25D366`, because those fail AA contrast with small text.
+- Design: deep teal and ink on warm paper-white, Bricolage Grotesque headings
+  with Manrope body text. All colours live in `public/css/tokens.css`; the
+  accent follows `primary_color` in the Settings tab. WhatsApp buttons use
+  `#1A7F4B` (not `#25D366`) so white text passes AA contrast.

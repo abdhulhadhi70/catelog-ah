@@ -9,15 +9,15 @@ const { chromium } = createRequire(import.meta.url)("playwright");
 // ---------- icons + share card ----------
 
 const mark = (size, radius) =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="${size}" height="${size}"><rect width="64" height="64" rx="${radius}" fill="#7A2E4A"/><text x="32" y="41.5" text-anchor="middle" font-family="Georgia, serif" font-size="25" font-weight="600" fill="#FBF8F4">AH</text></svg>`;
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="${size}" height="${size}"><rect width="64" height="64" rx="${radius}" fill="#0E5E58"/><text x="32" y="41.5" text-anchor="middle" font-family="Georgia, serif" font-size="25" font-weight="600" fill="#F5F4EF">AH</text></svg>`;
 
 const ogCard = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
-  <rect width="1200" height="630" fill="#FBF8F4"/>
-  <rect x="0" y="0" width="14" height="630" fill="#7A2E4A"/>
-  <circle cx="190" cy="315" r="96" fill="#7A2E4A"/>
-  <text x="190" y="348" text-anchor="middle" font-family="Georgia, serif" font-size="92" font-weight="600" fill="#FBF8F4">AH</text>
-  <text x="340" y="300" font-family="Georgia, serif" font-size="84" font-weight="600" fill="#2B2024">AH Enterprise</text>
-  <text x="344" y="368" font-family="Helvetica, Arial, sans-serif" font-size="34" fill="#6B5F64">Modest wear · Order on WhatsApp</text>
+  <rect width="1200" height="630" fill="#F5F4EF"/>
+  <rect x="0" y="0" width="14" height="630" fill="#0E5E58"/>
+  <circle cx="190" cy="315" r="96" fill="#0E5E58"/>
+  <text x="190" y="348" text-anchor="middle" font-family="Georgia, serif" font-size="92" font-weight="600" fill="#F5F4EF">AH</text>
+  <text x="340" y="300" font-family="Georgia, serif" font-size="84" font-weight="600" fill="#13201E">AH Enterprise</text>
+  <text x="344" y="368" font-family="Helvetica, Arial, sans-serif" font-size="34" fill="#56635F">Browse the catalog · Order on WhatsApp</text>
 </svg>`;
 
 // ---------- render ----------

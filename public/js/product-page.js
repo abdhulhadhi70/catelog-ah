@@ -79,6 +79,7 @@ function renderProduct() {
   ].filter(Boolean);
   const info = $("#info");
   info.innerHTML = `
+    ${cat ? `<a class="p-cat" href="/?cat=${esc(cat.slug)}">${esc(cat.name)}</a>` : ""}
     <h1>${esc(p.name)}</h1>
     <p class="p-code">Code: <strong>${esc(p.id)}</strong></p>
     <div class="p-price">${priceHTML(p, s, { large: true })}</div>

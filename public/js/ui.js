@@ -1,7 +1,7 @@
 // Shared UI pieces: images, cards, prices, toast, dialogs, and applying the
 // Settings tab (name, colour, announcement, footer) to the page.
 import { esc, initials } from "./format.js";
-import { fallbackHTML } from "./render.js";
+import { fallbackHTML, heroText } from "./render.js";
 export { imageHTML, priceHTML, cardHTML } from "./render.js";
 import { chatLink } from "./whatsapp.js";
 
@@ -77,7 +77,19 @@ export function applySettings(s) {
   bar.hidden = !s.announcement;
 
   const chat = chatLink(s);
-  for (const a of $$("#header-wa, #fab-wa")) a.href = chat;
+  for (const a of $$("#header-wa, #fab-wa, #hero-wa")) a.href = chat;
+
+  // Opening section on the catalog page (also drawn by the server).
+  const heroTitle = $("#hero-title");
+  if (heroTitle) {
+    const t = heroText(s);
+    heroTitle.textContent = t.title;
+    for (const [id, value] of [["#hero-kicker", t.kicker], ["#hero-note", t.note]]) {
+      const el = $(id);
+      $("span", el).textContent = value;
+      el.hidden = !value;
+    }
+  }
 
   const footer = $("#footer");
   if (footer) {

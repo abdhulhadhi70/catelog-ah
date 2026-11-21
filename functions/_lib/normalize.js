@@ -64,7 +64,7 @@ export const DEFAULT_SETTINGS = {
   announcement: "",
   instagramUrl: "",
   locationText: "",
-  primaryColor: "#7A2E4A",
+  primaryColor: "#0E5E58",
   currencySymbol: "₹",
   deliveryNote: "",
   returnPolicyNote: "",
@@ -290,6 +290,8 @@ export function buildCatalog({ productRows, categoryRows, settingRows }) {
   const counts = new Map();
   for (const p of products) counts.set(p.category, (counts.get(p.category) || 0) + 1);
   for (const c of categories) c.count = counts.get(c.slug) || 0;
+  const names = new Map(categories.map((c) => [c.slug, c.name]));
+  for (const p of products) p.categoryName = names.get(p.category) || "";
 
   return {
     catalog: { settings, categories, products, generatedAt: new Date().toISOString() },

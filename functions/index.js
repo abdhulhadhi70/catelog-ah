@@ -14,9 +14,8 @@ import {
   countText,
   featuredProducts,
   gridHTML,
-  heroArtHTML,
-  heroText,
   railHTML,
+  showFeaturedRail,
   sortProducts,
   visibleCategories,
 } from "../public/js/render.js";
@@ -66,26 +65,12 @@ export async function onRequestGet({ request, env, waitUntil }) {
     });
   }
 
-  const hero = heroText(s);
-  rw = rw.on("#hero-title", { element: (el) => el.setInnerContent(hero.title) });
-  for (const [id, value] of [["#hero-kicker", hero.kicker], ["#hero-note", hero.note]]) {
-    if (!value) continue;
-    rw = rw
-      .on(id, { element: (el) => el.removeAttribute("hidden") })
-      .on(`${id} span`, { element: (el) => el.setInnerContent(value) });
-  }
-
   const filtered = FILTER_PARAMS.some((k) => url.searchParams.has(k));
-  if (filtered) {
-    rw = rw
-      .on("#hero", { element: (el) => el.setAttribute("hidden", "") })
-      .on("#steps", { element: (el) => el.setAttribute("hidden", "") });
-  } else {
+  if (!filtered) {
     const featured = featuredProducts(catalog);
     const list = sortProducts(catalog.products, "featured");
-    const showFeatured = featured.length > 0;
+    const showFeatured = showFeaturedRail(catalog, featured);
     rw = rw
-      .on("#hero-art", { element: (el) => el.setInnerContent(heroArtHTML(showFeatured ? featured : list), { html: true }) })
       .on("#chips", { element: (el) => el.setInnerContent(chipsHTML(visibleCategories(catalog), ""), { html: true }) })
       .on("#result-count", { element: (el) => el.setInnerContent(countText(list.length)) })
       .on("#grid", {

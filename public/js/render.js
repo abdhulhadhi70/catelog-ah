@@ -78,29 +78,12 @@ export const railHTML = (list, settings) => list.map((p, i) => cardHTML(p, setti
 export const gridHTML = (list, settings, featuredShown) =>
   list.map((p, i) => cardHTML(p, settings, { eager: !featuredShown && i < 4, index: i })).join("");
 
-// ---------- hero ----------
-
-/** Words for the opening section, all from the Settings tab. */
-export function heroText(s) {
-  return {
-    title: s.tagline || s.businessName,
-    kicker: s.locationText || "",
-    note: s.deliveryNote || "",
-  };
+/**
+ * Show the "New & Featured" row only when the grid below has clearly more to
+ * offer; with a small catalog the row would just repeat the same products.
+ */
+export function showFeaturedRail(catalog, featured) {
+  return featured.length > 0 && catalog.products.length >= featured.length + 4;
 }
 
-/** Up to three featured photos, fanned like cards on a table. */
-export function heroArtHTML(products) {
-  return products
-    .filter((p) => p.images[0])
-    .slice(0, 3)
-    .map(
-      (p, i) =>
-        `<a class="hero-card hero-card-${i + 1}" href="/p/${esc(p.slug)}" tabindex="-1">${imageHTML(p.images[0], p.name, {
-          eager: true,
-          size: "src",
-        })}</a>`,
-    )
-    .join("");
-}
 export const countText = (n) => `${n} item${n === 1 ? "" : "s"}`;

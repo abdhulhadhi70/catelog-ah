@@ -64,7 +64,7 @@ export const DEFAULT_SETTINGS = {
   announcement: "",
   instagramUrl: "",
   locationText: "",
-  primaryColor: "#0E5E58",
+  primaryColor: "#7A2E4A",
   currencySymbol: "₹",
   deliveryNote: "",
   returnPolicyNote: "",

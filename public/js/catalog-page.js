@@ -4,7 +4,7 @@
 import { debounce, esc, fold, money } from "./format.js";
 import { setupList } from "./list.js";
 import { bootData, cachedCatalog as cachedCopy, fetchCatalog } from "./data.js";
-import { chipsHTML, countText, featuredProducts, gridHTML, heroArtHTML, railHTML, sortProducts, visibleCategories } from "./render.js";
+import { chipsHTML, countText, featuredProducts, gridHTML, railHTML, showFeaturedRail, sortProducts, visibleCategories } from "./render.js";
 import { $, $$, applySettings, openDialog, setupDialog, settleImages } from "./ui.js";
 import { captureSource } from "./whatsapp.js";
 
@@ -112,13 +112,10 @@ function render() {
   const active = $('.chip[aria-pressed="true"]', chips);
   if (active) chips.scrollLeft = active.offsetLeft - chips.clientWidth / 2 + active.clientWidth / 2;
 
-  // Opening section, steps and featured rail: only on the unfiltered view.
+  // Featured rail: only on the unfiltered view, and only if it adds something.
   const plain = !state.cat && !state.q && filterCount() === 0;
-  $("#hero").hidden = !plain;
-  $("#steps").hidden = !plain;
   const featured = featuredProducts(catalog);
-  const showFeatured = featured.length > 0 && plain;
-  if (!keepServerHTML) $("#hero-art").innerHTML = heroArtHTML(featured.length ? featured : catalog.products);
+  const showFeatured = plain && showFeaturedRail(catalog, featured);
   $("#featured").hidden = !showFeatured;
   if (showFeatured && !keepServerHTML) $("#featured-rail").innerHTML = railHTML(featured, s);
 
